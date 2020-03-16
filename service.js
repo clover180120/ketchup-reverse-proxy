@@ -7,7 +7,7 @@ exports.kkboxApiRequest = function (req, res) {
   const options = {
     headers: {
       'accept': 'application/json',
-      'authorization': 'Beare KKBOX_API_TOKEN'
+      'authorization': 'Bearer KKBOX_API_TOKEN'
     }
   }
   const proxyUrl = 'https://api.kkbox.com/v1.1' + reqUrl.pathname.replace('/kkbox', '') + '?' + params.toString();
