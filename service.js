@@ -22,7 +22,7 @@ exports.kkboxApiRequest = function (req, res) {
         res.statusCode = 200;
         res.setHeader('Content-Type', 'application/json');
         res.setHeader('Access-Control-Allow-Methods', 'GET');
-        res.setHeader('Access-Control-Allow-Origin', '*');
+        res.setHeader('Access-Control-Allow-Origin', 'https://clover180120.github.io');
         res.end(data);
       });
   }).on("error", function (err) {
@@ -52,7 +52,7 @@ exports.youtubeRequest = function (req, res) {
         res.statusCode = 200;
         res.setHeader('Content-Type', 'application/json');
         res.setHeader('Access-Control-Allow-Methods', 'GET');
-        res.setHeader('Access-Control-Allow-Origin', '*');
+        res.setHeader('Access-Control-Allow-Origin', 'https://clover180120.github.io');
         res.end(data);
       });
   }).on("error", function (err) {
