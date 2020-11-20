@@ -6,4 +6,3 @@
   2. `git push heroku master`
   3. `heroku ps:scale web=1`
   4. `heroku open`
-
