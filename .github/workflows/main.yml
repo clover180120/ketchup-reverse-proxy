@@ -24,12 +24,17 @@ jobs:
         curl -d "grant_type=client_credentials&&client_id=$KKBOX_CLIENT_ID&client_secret=$KKBOX_CLIENT_SECRET" https://account.kkbox.com/oauth2/token | cut -d'"' -f 4 | xargs -I {} sed -ie "s/KKBOX_API_TOKEN/{}/g" service.js
         sed -ie "s/YOUTUBE_API_KEY/$YOUTUBE_API_KEY/g" service.js
         git add service.js && git commit -m'Update the API token'
-    - name: Deploy to Heroku
-      env:
-        HEROKU_API_TOKEN: ${{ secrets.HEROKU_API_TOKEN }}
-        HEROKU_APP_NAME: "shrouded-ocean-69872"
-      if: github.ref == 'refs/heads/master' && job.status == 'success'
-      run: |
-        git remote add heroku https://heroku:$HEROKU_API_TOKEN@git.heroku.com/$HEROKU_APP_NAME.git
-        git filter-branch -- --all
-        git push heroku HEAD:master -f
+    - uses: akhileshns/heroku-deploy@v3.12.12 # This is the action
+      with:
+        heroku_api_key: ${{secrets.HEROKU_API_KEY}}
+        heroku_app_name: "shrouded-ocean-69872"
+        heroku_email: "scean081213@gmail.com"
+    #- name: Deploy to Heroku
+    #  env:
+    #    HEROKU_API_TOKEN: ${{ secrets.HEROKU_API_TOKEN }}
+    #    HEROKU_APP_NAME: "shrouded-ocean-69872"
+    #  if: github.ref == 'refs/heads/master' && job.status == 'success'
+    #  run: |
+    #    git remote add heroku https://heroku:$HEROKU_API_TOKEN@git.heroku.com/$HEROKU_APP_NAME.git
+    #    git filter-branch -- --all
+    #    git push heroku HEAD:master -f
